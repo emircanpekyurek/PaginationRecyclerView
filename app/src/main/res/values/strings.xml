@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">PaginationRecyclerView</string>
+
+    <string name="name_and_id_format">%1$s (%2$s)</string>
+    <string name="label_try_again">Try Again</string>
+
+    <string name="no_different_items_try_again">No different items. Try Again</string>
+    <string name="empty_list">Empty list</string>
+    <string name="no_one_is_here">No one is here!</string>
+</resources>

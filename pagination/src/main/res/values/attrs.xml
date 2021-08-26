@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PaginationRecyclerView">
+        <attr name="startPageIndex" format="integer" />
+    </declare-styleable>
+
+</resources>
