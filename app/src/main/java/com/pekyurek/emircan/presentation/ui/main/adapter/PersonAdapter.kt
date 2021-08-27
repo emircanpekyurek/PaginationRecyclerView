@@ -63,7 +63,7 @@ class PersonAdapter(private val onRetryClicked: () -> Unit) :
     override fun getItemCount(): Int = if (retryButtonVisibility) list.size + 1 else list.size
 
     @ExperimentalCoroutinesApi
-    fun addData(person: List<Person>) {
+    fun addUnlistedPersons(person: List<Person>) {
         if (person.isEmpty()) {
             setPaginationRecyclerViewError(R.string.empty_list)
             return

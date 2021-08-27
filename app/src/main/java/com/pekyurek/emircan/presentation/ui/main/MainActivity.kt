@@ -59,7 +59,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         viewModel.errorServiceResponse.observe(this) { binding.rvPerson.setError(it) }
 
-        viewModel.paginationNewData.observe(this) { personAdapter.addData(it) }
+        viewModel.paginationNewData.observe(this) { personAdapter.addUnlistedPersons(it) }
 
         viewModel.loading.observe(this) { loading ->
             binding.swipeRefreshLayout.isRefreshing = loading
