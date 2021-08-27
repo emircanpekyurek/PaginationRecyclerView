@@ -2,7 +2,6 @@ package com.pekyurek.emircan.data.repository
 
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import kotlin.collections.ArrayList
 import kotlin.math.min
 import kotlin.random.Random
@@ -56,8 +55,6 @@ class DataSource {
             newPeople.add(person)
         }
         people = newPeople.shuffled()
-        Log.d("dsadasdasd", "${people.size}")
-        Log.d("dsadasdasd", "distinct = ${people.distinct().size}")
     }
 
     private fun processRequest(next: String?): ProcessResult {
