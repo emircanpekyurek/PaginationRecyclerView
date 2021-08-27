@@ -4,6 +4,7 @@
 
 (app) build.gradle:
 ```gradle
+implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3' // or different version (for collect)
 implementation 'com.github.emircanpekyurek:PaginationRecyclerView:1.0'
 ```
 #### AND
