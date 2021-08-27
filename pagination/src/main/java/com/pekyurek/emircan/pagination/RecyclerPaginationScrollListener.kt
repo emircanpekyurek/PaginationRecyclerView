@@ -9,7 +9,10 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.pekyurek.emircan.pagination.extension.orZero
 import java.lang.IllegalStateException
 
-abstract class RecyclerPaginationScrollListener(private val startPageIndex: Int? = null) : RecyclerView.OnScrollListener() {
+abstract class RecyclerPaginationScrollListener(
+    private val startPageIndex: Int? = null,
+    private val paginationOffset: Int = 0
+) : RecyclerView.OnScrollListener() {
 
     private var lastVisibleItemPosition: Int = 0
     private var visibleItemCount: Int = 0
@@ -48,7 +51,7 @@ abstract class RecyclerPaginationScrollListener(private val startPageIndex: Int?
             previousTotalItemCount = totalItemCount
         }
 
-        if (!loading && ((visibleItemCount + lastVisibleItemPosition) >= totalItemCount)) {
+        if (!loading && ((visibleItemCount + lastVisibleItemPosition) >= totalItemCount - paginationOffset)) {
             currentPage = currentPage.orZero() + 1
             onLoadMore(currentPage)
             loading = true

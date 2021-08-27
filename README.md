@@ -30,11 +30,12 @@ dependencyResolutionManagement {
 ```
 
 ## Usage
-Add the PaginationRecyclerView to your design file as below and enter the first page number (for example 1, default value = null):
+Add the PaginationRecyclerView to your design file as below and enter the first page number (default value = null) and pagination offset (default value = 0):
 ```xml
 <com.pekyurek.emircan.pagination.PaginationRecyclerView
     android:id="@+id/recyclerView"
     app:startPageIndex="1"
+    app:paginationOffset="10"
     ...
 />
 ```

@@ -2,6 +2,7 @@
 <resources>
     <declare-styleable name="PaginationRecyclerView">
         <attr name="startPageIndex" format="integer" />
+        <attr name="paginationOffset" format="integer" />
     </declare-styleable>
 
 </resources>

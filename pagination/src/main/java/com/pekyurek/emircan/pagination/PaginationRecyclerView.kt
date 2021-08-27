@@ -2,6 +2,7 @@ package com.pekyurek.emircan.pagination
 
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.util.AttributeSet
 import androidx.annotation.StringRes
 import androidx.core.content.res.getIntOrThrow
@@ -26,18 +27,29 @@ class PaginationRecyclerView @JvmOverloads constructor(
 
     init {
         context.obtainStyledAttributes(attrs, R.styleable.PaginationRecyclerView).run {
-            val startPageIndex = try {
-                getIntOrThrow(R.styleable.PaginationRecyclerView_startPageIndex)
-            } catch (e: IllegalArgumentException) {
-                null
-            }
-            addPaginationScrollListener(startPageIndex)
+            addPaginationScrollListener(getStartIndex(this), getPaginationOffset(this))
             recycle()
         }
     }
 
-    private fun addPaginationScrollListener(startPageIndex: Int?) {
-        recyclerPaginationScrollListener = object : RecyclerPaginationScrollListener(startPageIndex) {
+    private fun getStartIndex(typedArray: TypedArray): Int? {
+        return try {
+            typedArray.getIntOrThrow(R.styleable.PaginationRecyclerView_startPageIndex).let {
+                if (it < 0) null else it
+            }
+        } catch (e: IllegalArgumentException) {
+            null
+        }
+    }
+
+    private fun getPaginationOffset(typedArray: TypedArray): Int {
+        return typedArray.getInt(R.styleable.PaginationRecyclerView_paginationOffset, 0).let {
+            if (it < 0) 0 else it
+        }
+    }
+
+    private fun addPaginationScrollListener(startPageIndex: Int?, paginationOffset: Int) {
+        recyclerPaginationScrollListener = object : RecyclerPaginationScrollListener(startPageIndex, paginationOffset) {
             override fun onLoadMore(page: Int?) {
                 super.onLoadMore(page)
                 loadMore(page)
